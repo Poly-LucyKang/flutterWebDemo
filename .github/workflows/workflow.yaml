@@ -17,7 +17,7 @@ jobs:
       - run: flutter pub get
       - run: flutter build web --release
         # 1. change path which exist lib/main.dart
-        working-directory: /flutter-web-demo
+#        working-directory: /flutter-web-demo (루트 디렉토리라 설정 x)
       - run: |
           # 2. change path to [existed lib/main.dart path]/build/web
           cd flutter-web-demo/build/web
