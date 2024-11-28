@@ -24,7 +24,7 @@ jobs:
           cd flutter-web-demo/build/web
           git init
            # 3. change your email
-          git config --global user.email lucy.kang@eud-poly.com
+          git config --global user.email lucy.kang@edu-poly.com
           # 4. change your name
           git config --global user.name lucy.kang
           git status
