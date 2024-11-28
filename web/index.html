@@ -1,72 +1,93 @@
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--<head>-->
-<!--  &lt;!&ndash;-->
-<!--    If you are serving your web app in a path other than the root, change the-->
-<!--    href value below to reflect the base path you are serving from.-->
-
-<!--    The path provided below has to start and end with a slash "/" in order for-->
-<!--    it to work correctly.-->
-
-<!--    For more details:-->
-<!--    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base-->
-
-<!--    This is a placeholder for base href that will be replaced by the value of-->
-<!--    the `&#45;&#45;base-href` argument provided to `flutter build`.-->
-<!--  &ndash;&gt;-->
-<!--&lt;!&ndash;  <base href="$FLUTTER_BASE_HREF">&ndash;&gt;-->
-<!--  <base href="/main/">-->
-
-<!--  <meta charset="UTF-8">-->
-<!--  <meta content="IE=Edge" http-equiv="X-UA-Compatible">-->
-<!--  <meta name="description" content="A new Flutter project.">-->
-
-<!--  &lt;!&ndash; iOS meta tags & icons &ndash;&gt;-->
-<!--  <meta name="apple-mobile-web-app-capable" content="yes">-->
-<!--  <meta name="apple-mobile-web-app-status-bar-style" content="black">-->
-<!--  <meta name="apple-mobile-web-app-title" content="flutterwebproject">-->
-<!--  <link rel="apple-touch-icon" href="icons/Icon-192.png">-->
-
-<!--  &lt;!&ndash; Favicon &ndash;&gt;-->
-<!--  <link rel="icon" type="image/png" href="favicon.png"/>-->
-
-<!--  <title>flutterwebdemo</title>-->
-<!--  <link rel="manifest" href="manifest.json">-->
-
-<!--  <script>-->
-<!--    // The value below is injected by flutter build, do not touch.-->
-<!--    var serviceWorkerVersion = '{{flutter_service_worker_version}}';-->
-<!--  </script>-->
-<!--  &lt;!&ndash; This script adds the flutter initialization JS code &ndash;&gt;-->
-<!--  <script src="flutter.js" defer></script>-->
-<!--</head>-->
-<!--<body>-->
-<!--  <script src="main.dart.js" type="application/javascript"></script>-->
-<!--&lt;!&ndash;  <script src="flutter_bootstrap.js" async></script>&ndash;&gt;-->
-<!--  &lt;!&ndash; <script>-->
-<!--    window.addEventListener('load', function(ev) {-->
-<!--      // Download main.dart.js-->
-<!--      _flutter.loader.load({-->
-<!--        serviceWorker: {-->
-<!--          serviceWorkerVersion: serviceWorkerVersion,-->
-<!--        },-->
-<!--        onEntrypointLoaded: function(engineInitializer) {-->
-<!--          engineInitializer.initializeEngine().then(function(appRunner) {-->
-<!--            appRunner.runApp();-->
-<!--          });-->
-<!--        }-->
-<!--      });-->
-<!--    });-->
-<!--  </script> &ndash;&gt;-->
-<!--</body>-->
-<!--</html>-->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Flutter Web</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flutter Web App</title>
+  <!-- Flutter 애플리케이션을 스타일링하거나 추가 메타 태그를 여기에 삽입할 수 있습니다. -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+<!--  <script>-->
+<!--    // Flutter Web에서 로드할 때, 필요한 설정을 할 수 있는 스크립트-->
+<!--    if (navigator.serviceWorker) {-->
+<!--      navigator.serviceWorker.register('flutter_service_worker.js');-->
+<!--    }-->
+<!--  </script>-->
 </head>
 <body>
+<!-- Flutter 애플리케이션이 로드될 위치를 지정 -->
 <script src="main.dart.js" type="application/javascript"></script>
 </body>
 </html>
+
+<!--&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;-->
+<!--&lt;!&ndash;<html>&ndash;&gt;-->
+<!--&lt;!&ndash;<head>&ndash;&gt;-->
+<!--&lt;!&ndash;  &lt;!&ndash;&ndash;&gt;-->
+<!--&lt;!&ndash;    If you are serving your web app in a path other than the root, change the&ndash;&gt;-->
+<!--&lt;!&ndash;    href value below to reflect the base path you are serving from.&ndash;&gt;-->
+
+<!--&lt;!&ndash;    The path provided below has to start and end with a slash "/" in order for&ndash;&gt;-->
+<!--&lt;!&ndash;    it to work correctly.&ndash;&gt;-->
+
+<!--&lt;!&ndash;    For more details:&ndash;&gt;-->
+<!--&lt;!&ndash;    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base&ndash;&gt;-->
+
+<!--&lt;!&ndash;    This is a placeholder for base href that will be replaced by the value of&ndash;&gt;-->
+<!--&lt;!&ndash;    the `&#45;&#45;base-href` argument provided to `flutter build`.&ndash;&gt;-->
+<!--&lt;!&ndash;  &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;  <base href="$FLUTTER_BASE_HREF">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;  <base href="/main/">&ndash;&gt;-->
+
+<!--&lt;!&ndash;  <meta charset="UTF-8">&ndash;&gt;-->
+<!--&lt;!&ndash;  <meta content="IE=Edge" http-equiv="X-UA-Compatible">&ndash;&gt;-->
+<!--&lt;!&ndash;  <meta name="description" content="A new Flutter project.">&ndash;&gt;-->
+
+<!--&lt;!&ndash;  &lt;!&ndash; iOS meta tags & icons &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;  <meta name="apple-mobile-web-app-capable" content="yes">&ndash;&gt;-->
+<!--&lt;!&ndash;  <meta name="apple-mobile-web-app-status-bar-style" content="black">&ndash;&gt;-->
+<!--&lt;!&ndash;  <meta name="apple-mobile-web-app-title" content="flutterwebproject">&ndash;&gt;-->
+<!--&lt;!&ndash;  <link rel="apple-touch-icon" href="icons/Icon-192.png">&ndash;&gt;-->
+
+<!--&lt;!&ndash;  &lt;!&ndash; Favicon &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;  <link rel="icon" type="image/png" href="favicon.png"/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;  <title>flutterwebdemo</title>&ndash;&gt;-->
+<!--&lt;!&ndash;  <link rel="manifest" href="manifest.json">&ndash;&gt;-->
+
+<!--&lt;!&ndash;  <script>&ndash;&gt;-->
+<!--&lt;!&ndash;    // The value below is injected by flutter build, do not touch.&ndash;&gt;-->
+<!--&lt;!&ndash;    var serviceWorkerVersion = '{{flutter_service_worker_version}}';&ndash;&gt;-->
+<!--&lt;!&ndash;  </script>&ndash;&gt;-->
+<!--&lt;!&ndash;  &lt;!&ndash; This script adds the flutter initialization JS code &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;  <script src="flutter.js" defer></script>&ndash;&gt;-->
+<!--&lt;!&ndash;</head>&ndash;&gt;-->
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+<!--&lt;!&ndash;  <script src="main.dart.js" type="application/javascript"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;  <script src="flutter_bootstrap.js" async></script>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;  &lt;!&ndash; <script>&ndash;&gt;-->
+<!--&lt;!&ndash;    window.addEventListener('load', function(ev) {&ndash;&gt;-->
+<!--&lt;!&ndash;      // Download main.dart.js&ndash;&gt;-->
+<!--&lt;!&ndash;      _flutter.loader.load({&ndash;&gt;-->
+<!--&lt;!&ndash;        serviceWorker: {&ndash;&gt;-->
+<!--&lt;!&ndash;          serviceWorkerVersion: serviceWorkerVersion,&ndash;&gt;-->
+<!--&lt;!&ndash;        },&ndash;&gt;-->
+<!--&lt;!&ndash;        onEntrypointLoaded: function(engineInitializer) {&ndash;&gt;-->
+<!--&lt;!&ndash;          engineInitializer.initializeEngine().then(function(appRunner) {&ndash;&gt;-->
+<!--&lt;!&ndash;            appRunner.runApp();&ndash;&gt;-->
+<!--&lt;!&ndash;          });&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;      });&ndash;&gt;-->
+<!--&lt;!&ndash;    });&ndash;&gt;-->
+<!--&lt;!&ndash;  </script> &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <title>Flutter Web</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<script src="main.dart.js" type="application/javascript"></script>-->
+<!--</body>-->
+<!--</html>-->
