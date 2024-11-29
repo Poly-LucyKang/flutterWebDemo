@@ -70,7 +70,7 @@ class _FruitDetailPageState extends State<FruitDetailPage> {
    void sendToNative(String fruitName) {
      try {
        // 네이티브 앱에 메서드 호출
-       js.context.callMethod('sendToNative', [fruitName]);
+       js.context.callMethod('sendFruitName', [fruitName]);
        print('[KHJ] Successfully called native method with fruit: $fruitName');
      } catch (e) {
        // 호출이 실패했을 때 오류 로그 출력
