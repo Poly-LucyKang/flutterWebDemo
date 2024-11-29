@@ -68,8 +68,14 @@ class _FruitDetailPageState extends State<FruitDetailPage> {
 
    // 과일 클릭 시 JavaScript로 데이터를 보내는 함수
    void sendToNative(String fruitName) {
-     // Android 네이티브 앱으로 과일 이름을 전달하는 JavaScript 함수 호출
-     js.context.callMethod('sendFruitName', [fruitName]);
+     try {
+       // 네이티브 앱에 메서드 호출
+       js.context.callMethod('sendToNative', [fruitName]);
+       print('[KHJ] Successfully called native method with fruit: $fruitName');
+     } catch (e) {
+       // 호출이 실패했을 때 오류 로그 출력
+       print('[KHJ] Error calling native method: $e');
+     }
    }
   @override
   void initState() {
