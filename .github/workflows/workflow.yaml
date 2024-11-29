@@ -51,8 +51,17 @@ jobs:
           sdk: 'stable'  # 'stable'을 설정하여 최신 Dart SDK를 사용
 #          flutter-version: '3.7.0'  # Flutter 버전 3.7.0으로 설정
       - run: flutter config --enable-web
-      - run: flutter pub get
-      - run: flutter build web --release
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build the web app
+        run: flutter build web --release
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: build/web
         # 1. change path which exist lib/main.dart
 #        working-directory: /flutter-web-demo (루트 디렉토리라 설정 x)
       - run: |
