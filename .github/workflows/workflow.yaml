@@ -1,35 +1,73 @@
-name: Flutter Web
-on: [push]
+name: deploy flutter web to github pages
+
+# 1
+on:
+  push:
+    branches:
+      - main
 jobs:
-  build:
-    name: Build Web
-    env:
-      my_secret: $
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
+      # 1
+      # https://github.com/marketplace/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2
+      # https://github.com/marketplace/actions/flutter-action
+      - name: Setup flutter
+        uses: subosito/flutter-action@v2
         with:
-#          channel: 'dev'
+          channel: stable
           sdk: 'stable'  # 'stable'을 설정하여 최신 Dart SDK를 사용
-#          flutter-version: '3.7.0'  # Flutter 버전 3.7.0으로 설정
+          flutter-version: '3.7.0'  # Flutter 버전 3.7.0으로 설정
+
       - run: flutter config --enable-web
       - run: flutter pub get
-      - run: flutter build web --release
-        # 1. change path which exist lib/main.dart
-#        working-directory: /flutter-web-demo (루트 디렉토리라 설정 x)
-      - run: |
-          # 2. change path to [existed lib/main.dart path]/build/web
-          cd ./build/web 
-          git init --initial-branch=gh-page
-           # 3. change your email
-          git config --global user.email lucy.kang@edu-poly.com
-          # 4. change your name
-          git config --global user.name Poly-LucyKang
-          git status
-          # 5. change your repository
-          git remote add origin https://$@github.com/Poly-LucyKang/flutterWebDemo.git
-          git checkout -b gh-page
-          git add --all
-          git commit -m "update"
-          git push origin gh-page -f
+      # 3
+      - name: Build web
+        run: flutter build web --base-href "/${{flutterWebDemo}}/"
+
+      # 4
+      # https://github.com/marketplace/actions/github-pages-action
+      - name: Deploy to github pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./build/web
+#name: Flutter Web
+#on: [push]
+#jobs:
+#  build:
+#    name: Build Web
+#    env:
+#      my_secret: $
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v1
+#      - uses: subosito/flutter-action@v1
+#        with:
+##          channel: 'dev'
+#          sdk: 'stable'  # 'stable'을 설정하여 최신 Dart SDK를 사용
+##          flutter-version: '3.7.0'  # Flutter 버전 3.7.0으로 설정
+#      - run: flutter config --enable-web
+#      - run: flutter pub get
+#      - run: flutter build web --release
+#        # 1. change path which exist lib/main.dart
+##        working-directory: /flutter-web-demo (루트 디렉토리라 설정 x)
+#      - run: |
+#          # 2. change path to [existed lib/main.dart path]/build/web
+#          cd ./build/web
+#          git init --initial-branch=gh-page
+#           # 3. change your email
+#          git config --global user.email lucy.kang@edu-poly.com
+#          # 4. change your name
+#          git config --global user.name Poly-LucyKang
+#          git status
+#          # 5. change your repository
+#          git remote add origin https://$@github.com/Poly-LucyKang/flutterWebDemo.git
+#          git checkout -b gh-page
+#          git add --all
+#          git commit -m "update"
+#          git push origin gh-page -f
+
