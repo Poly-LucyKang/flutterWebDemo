@@ -65,7 +65,7 @@ jobs:
           git status
           # 5. change your repository
           git checkout --orphan gh-pages  # 새로 gh-pages 브랜치 만들기
-          git add -all
+          git add --all
           git commit -m "Deploy Flutter Web to GitHub Pages"
           git push -f origin gh-pages  # gh-pages 브랜치로 강제 푸시
 #          git remote add origin https://$@github.com/Poly-LucyKang/flutterWebDemo.git
