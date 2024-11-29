@@ -51,32 +51,29 @@ jobs:
           sdk: 'stable'  # 'stable'을 설정하여 최신 Dart SDK를 사용
 #          flutter-version: '3.7.0'  # Flutter 버전 3.7.0으로 설정
       - run: flutter config --enable-web
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Build the web app
-        run: flutter build web --release
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: build/web
+      - run: flutter pub get
+      - run: flutter build web --release
         # 1. change path which exist lib/main.dart
 #        working-directory: /flutter-web-demo (루트 디렉토리라 설정 x)
+      # gh-pagehs 브랜치에 배포
       - run: |
-          # 2. change path to [existed lib/main.dart path]/build/web
-          cd ./build/web
-          # git init --initial-branch=gh-pages
-          # 3. change your email, name
+          # 빌드된 웹 파일 위치로 이동
+          cd ./build/web  
+          
+          # git 초기화 및 기본 설정          
+          git init --initial-branch=gh-pages # 새로 gh-pages 브랜치 만들기 
           git config --global user.email lucy.kang@edu-poly.com 
           git config --global user.name Poly-LucyKang
           git status
+          
           # 5. change your repository
-          git checkout --orphan gh-pages  # 새로 gh-pages 브랜치 만들기
+          #git checkout --orphan gh-pages  # 새로 gh-pages 브랜치 만들기
+          # 변경된 파일을 스테이징
           git add --all
           git commit -m "Deploy Flutter Web to GitHub Pages"
-          git push -f origin gh-pages  # gh-pages 브랜치로 강제 푸시
+          
+          # 기존 gh-pages 브랜치로 푸시
+          git push -f origin gh-pages  # 강제로 푸시 (기존 gh-pages 브랜치를 덮어씁니다)
 #          git remote add origin https://$@github.com/Poly-LucyKang/flutterWebDemo.git
 #          git checkout -b gh-pages
 #          git add --all
