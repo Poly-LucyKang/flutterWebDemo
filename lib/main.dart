@@ -55,11 +55,15 @@ class FruitListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white, // 배경색을 흰색으로 설정
       body: ListView.separated(
         itemCount: fruits.length,
         itemBuilder: (context, index) {
           return GestureDetector(
-            child: Row(
+            child: Container(
+              color: Colors.white,
+              child:
+            Row(
               children: [
                 Expanded(flex: 9,child: Padding(padding: EdgeInsets.fromLTRB(20, 0, 10, 0), child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -71,7 +75,7 @@ class FruitListPage extends StatelessWidget {
                 ),),),
                 const Expanded(flex: 1,child: Align(alignment: Alignment.centerRight,child: Padding(padding: EdgeInsets.fromLTRB(10, 0, 20, 0), child: Icon(Icons.arrow_forward_ios_sharp),),))
               ],
-            ),
+            ),),
             onTap: () {
               // 상세 페이지로 이동
               Navigator.push(
@@ -120,6 +124,7 @@ class _FruitDetailPageState extends State<FruitDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white, // 배경색을 흰색으로 설정
         body: Builder(builder: (BuildContext context) {
           return  GestureDetector(
             onTap: () => {
