@@ -20,8 +20,7 @@ jobs:
 #        working-directory: /flutter-web-demo (루트 디렉토리라 설정 x)
       - run: |
           # 2. change path to [existed lib/main.dart path]/build/web
-          cd ./build/web
-          git config --global init.defaultBranch main
+          cd ./build/web 
           git init
            # 3. change your email
           git config --global user.email lucy.kang@edu-poly.com
@@ -30,7 +29,7 @@ jobs:
           git status
           # 5. change your repository
           git remote add origin https://$@github.com/Poly-LucyKang/flutterWebDemo.git
-          git checkout -b gh-pages
+          git checkout -b gh-page
           git add --all
           git commit -m "update"
-          git push origin gh-pages -f
+          git push origin gh-page -f
