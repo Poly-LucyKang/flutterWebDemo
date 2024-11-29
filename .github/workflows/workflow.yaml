@@ -36,7 +36,10 @@
 #        with:
 #          publish_dir: ./build/web
 name: Flutter Web
-on: [push]
+on:
+  push:
+    branches:
+      - main  # main 브랜치에 푸시되면 배포가 트리거됩니다.
 jobs:
   build:
     name: Build Web
@@ -67,7 +70,8 @@ jobs:
           git status
           
           # 5. change your repository
-          #git checkout --orphan gh-pages  # 새로 gh-pages 브랜치 만들기
+          git checkout --orphan gh-pages  # 새로 gh-pages 브랜치 만들기
+          
           # 변경된 파일을 스테이징
           git add --all
           git commit -m "Deploy Flutter Web to GitHub Pages"
