@@ -58318,7 +58318,7 @@ A.kZ.prototype={
 al(){return new A.GR()}}
 A.GR.prototype={
 JP(a){var s,r
-try{$.ahQ().vN("sendToNative",[a])
+try{$.ahQ().vN("sendFruitName",[a])
 A.ps("[KHJ] Successfully called native method with fruit: "+a)}catch(r){s=A.ay(r)
 A.ps("[KHJ] Error calling native method: "+A.l(s))}},
 aq(){this.aX()},
