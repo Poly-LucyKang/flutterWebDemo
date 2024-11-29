@@ -10,7 +10,7 @@
 <!--  <script>-->
 <!--    // Flutter Web에서 로드할 때, 필요한 설정을 할 수 있는 스크립트-->
 <!--    if (navigator.serviceWorker)-->
-<!--      navigator.serviceWorker.register('flutter_service_worker.js?v=626319263');-->
+<!--      navigator.serviceWorker.register('flutter_service_worker.js?v=3465326162');-->
 <!--    }-->
 <!--  </script>-->
 <!--</head>-->
@@ -28,15 +28,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flutter Web App</title>
   <meta name="description" content="A new Flutter project.">
-
   <!-- Flutter Web SDK -->
   <script src="flutter_web_sdk.js"></script>
-
   <base href="/flutterWebDemo/">
-<!--  <base href="/flutterWebDemo/">-->
-
-  <!-- Include the Flutter Web App generated JS -->
   <script src="main.dart.js" defer></script>
+  <script type="text/javascript">
+    function sendFruitName(fruitName) {
+     // alert("선택한 과일 : " + fruitName);
+    }
+  </script>
+  </script>
 </head>
 <body>
 <!-- This div is where your Flutter app will be rendered -->
