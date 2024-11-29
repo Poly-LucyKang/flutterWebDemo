@@ -21,11 +21,11 @@ jobs:
       - run: |
           # 2. change path to [existed lib/main.dart path]/build/web
           cd ./build/web 
-          git init
+          git init --initial-branch=gh-page
            # 3. change your email
           git config --global user.email lucy.kang@edu-poly.com
           # 4. change your name
-          git config --global user.name poly-lucykang
+          git config --global user.name Poly-LucyKang
           git status
           # 5. change your repository
           git remote add origin https://$@github.com/Poly-LucyKang/flutterWebDemo.git
