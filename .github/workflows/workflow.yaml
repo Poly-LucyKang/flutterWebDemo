@@ -21,6 +21,7 @@ jobs:
       - run: |
           # 2. change path to [existed lib/main.dart path]/build/web
           cd ./build/web
+          git config --global init.defaultBranch main
           git init
            # 3. change your email
           git config --global user.email lucy.kang@edu-poly.com
