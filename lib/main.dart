@@ -1,10 +1,15 @@
+
+ import 'dart:js' as js; // JavaScript interop을 위한 패키지
 import 'package:flutter/material.dart';
+import 'package:webengage_flutter/webengage_flutter.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -48,24 +53,42 @@ class FruitListPage extends StatelessWidget {
   }
 }
 
-class FruitDetailPage extends StatelessWidget {
+class FruitDetailPage extends StatefulWidget {
   final String fruitName;
 
-  // 생성자에서 과일 이름을 받음
   FruitDetailPage({required this.fruitName});
+
+  @override
+  _FruitDetailPageState createState() => _FruitDetailPageState();
+
+}
+
+class _FruitDetailPageState extends State<FruitDetailPage> {
+   late WebViewController _controller;
+
+   // 과일 클릭 시 JavaScript로 데이터를 보내는 함수
+   void sendToNative(String fruitName) {
+     // Android 네이티브 앱으로 과일 이름을 전달하는 JavaScript 함수 호출
+     js.context.callMethod('sendFruitName', [fruitName]);
+   }
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('$fruitName 페이지'),
-      ),
-      body: Center(
-        child: Text(
-          '♡ ♥ $fruitName ♥ ♡',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
-    );
+        appBar: AppBar(
+            title:Text('${widget.fruitName} 페이지') ),
+        body: Builder(builder: (BuildContext context) {
+          return  GestureDetector(
+            onTap: () => {
+              sendToNative(widget.fruitName)
+            },
+            child: Center(child:
+              Text("${widget.fruitName}"),),
+          );
+    })); //WebViewWidget(controller: _controller));
   }
 }
