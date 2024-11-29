@@ -58,16 +58,19 @@ jobs:
       - run: |
           # 2. change path to [existed lib/main.dart path]/build/web
           cd ./build/web
-          git init --initial-branch=gh-pages
-           # 3. change your email
-          git config --global user.email lucy.kang@edu-poly.com
-          # 4. change your name
+          # git init --initial-branch=gh-pages
+          # 3. change your email, name
+          git config --global user.email lucy.kang@edu-poly.com 
           git config --global user.name Poly-LucyKang
           git status
           # 5. change your repository
-          git remote add origin https://$@github.com/Poly-LucyKang/flutterWebDemo.git
-          git checkout -b gh-pages
-          git add --all
-          git commit -m "update"
-          git push origin gh-pages -f
+          git checkout --orphan gh-pages  # 새로 gh-pages 브랜치 만들기
+          git add -all
+          git commit -m "Deploy Flutter Web to GitHub Pages"
+          git push -f origin gh-pages  # gh-pages 브랜치로 강제 푸시
+#          git remote add origin https://$@github.com/Poly-LucyKang/flutterWebDemo.git
+#          git checkout -b gh-pages
+#          git add --all
+#          git commit -m "update"
+#          git push origin gh-pages -f
 
