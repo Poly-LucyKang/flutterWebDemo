@@ -48,7 +48,7 @@
 ##          git commit -m "update"
 ##          git push origin gh-pages -f
 
-ame: deploy flutter web to github pages
+name: deploy flutter web to github pages
 
 # 1
 on:
