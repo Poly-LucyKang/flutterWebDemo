@@ -17,18 +17,14 @@ window.state = {
       const platform = getPlatform();
       if (platform === 'android') {
         // Android에서만 사용할 코드 (postMessage 방식)
-        if (window.Android) {
-          window.Android.sendFruitName(fruitName);
-            console.log("[KHJ] Message sent to Android: " + fruitName);
-        }
+         window.polyWebBridge.sendFruitName(fruitName);
+          console.log("[KHJ] app js platform android: " + fruitName);
       } else if (platform === 'ios') {
         // iOS에서만 사용할 코드 (window.webkit.messageHandlers)
-        if (window.webkit && window.webkit.messageHandlers.nativeBridge) {
-          window.webkit.messageHandlers.nativeBridge.postMessage(fruitName);
-          console.log("[KHJ] Message sent to iOS: " + fruitName);
-        }
+        window.webkit.messageHandlers.polyWebBridge.postMessage(fruitName);
+          console.log("[KHJ] app js platform iOS: " + fruitName);
       } else {
         // Flutter Web에서는 콘솔에 출력하거나 다른 처리를 할 수 있음
-        console.log('Flutter Web: ' + fruitName);
+        console.log('[KHJ] app js platform web: ' + fruitName);
       }
     }
