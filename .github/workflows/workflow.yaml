@@ -1,86 +1,88 @@
-#name: deploy flutter web to github pages
 #
-## 1
+#name: Flutter Web
 #on:
 #  push:
 #    branches:
-#      - main
+#      - main  # main 브랜치에 푸시되면 배포가 트리거됩니다.
 #jobs:
-#  deploy:
+#  build:
+#    name: Build Web
+#    env:
+#      my_secret: $
 #    runs-on: ubuntu-latest
 #    steps:
-#      # 1
-#      # https://github.com/marketplace/actions/checkout
-#      - name: Checkout
-#        uses: actions/checkout@v4
-#
-#      # 2
-#      # https://github.com/marketplace/actions/flutter-action
-#      - name: Setup flutter
-#        uses: subosito/flutter-action@v2
+#      - uses: actions/checkout@v1
+#      - uses: subosito/flutter-action@v1
 #        with:
-#          channel: stable
+##          channel: 'dev'
 #          sdk: 'stable'  # 'stable'을 설정하여 최신 Dart SDK를 사용
-#          flutter-version: '3.7.0'  # Flutter 버전 3.7.0으로 설정
-#
+##          flutter-version: '3.7.0'  # Flutter 버전 3.7.0으로 설정
 #      - run: flutter config --enable-web
 #      - run: flutter pub get
-#      # 3
-#      - name: Build web
-#        run: flutter build web --release --base-href "/${{flutterWebDemo}}/"
+#      - run: flutter build web --release
+#        # 1. change path which exist lib/main.dart
+##        working-directory: /flutter-web-demo (루트 디렉토리라 설정 x)
+#      # gh-pagehs 브랜치에 배포
+#      - run: |
+#          # 빌드된 웹 파일 위치로 이동
+#          cd ./build/web
 #
-#      # 4
-#      # https://github.com/marketplace/actions/github-pages-action
-#      - name: Deploy to github pages
-#        uses: peaceiris/actions-gh-pages@v3
-#        with:
-#          publish_dir: ./build/web
-name: Flutter Web
+#          # git 초기화 및 기본 설정
+#          git init --initial-branch=gh-pages # 새로 gh-pages 브랜치 만들기
+#          git config --global user.email lucy.kang@edu-poly.com
+#          git config --global user.name Poly-LucyKang
+#          git status
+#
+#          # 5. change your repository
+#          git checkout --orphan gh-pages  # 새로 gh-pages 브랜치 만들기
+#
+#          # 변경된 파일을 스테이징
+#          git add --all
+#          git commit -m "Deploy Flutter Web to GitHub Pages"
+#
+#          # 기존 gh-pages 브랜치로 푸시
+#          git push -f origin gh-pages  # 강제로 푸시 (기존 gh-pages 브랜치를 덮어씁니다)
+##          git remote add origin https://$@github.com/Poly-LucyKang/flutterWebDemo.git
+##          git checkout -b gh-pages
+##          git add --all
+##          git commit -m "update"
+##          git push origin gh-pages -f
+
+ame: deploy flutter web to github pages
+
+# 1
 on:
   push:
     branches:
-      - main  # main 브랜치에 푸시되면 배포가 트리거됩니다.
+      - main
+
 jobs:
-  build:
-    name: Build Web
-    env:
-      my_secret: $
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
-        with:
-#          channel: 'dev'
-          sdk: 'stable'  # 'stable'을 설정하여 최신 Dart SDK를 사용
-#          flutter-version: '3.7.0'  # Flutter 버전 3.7.0으로 설정
-      - run: flutter config --enable-web
-      - run: flutter pub get
-      - run: flutter build web --release
-        # 1. change path which exist lib/main.dart
-#        working-directory: /flutter-web-demo (루트 디렉토리라 설정 x)
-      # gh-pagehs 브랜치에 배포
-      - run: |
-          # 빌드된 웹 파일 위치로 이동
-          cd ./build/web  
-          
-          # git 초기화 및 기본 설정          
-          git init --initial-branch=gh-pages # 새로 gh-pages 브랜치 만들기 
-          git config --global user.email lucy.kang@edu-poly.com 
-          git config --global user.name Poly-LucyKang
-          git status
-          
-          # 5. change your repository
-          git checkout --orphan gh-pages  # 새로 gh-pages 브랜치 만들기
-          
-          # 변경된 파일을 스테이징
-          git add --all
-          git commit -m "Deploy Flutter Web to GitHub Pages"
-          
-          # 기존 gh-pages 브랜치로 푸시
-          git push -f origin gh-pages  # 강제로 푸시 (기존 gh-pages 브랜치를 덮어씁니다)
-#          git remote add origin https://$@github.com/Poly-LucyKang/flutterWebDemo.git
-#          git checkout -b gh-pages
-#          git add --all
-#          git commit -m "update"
-#          git push origin gh-pages -f
+      # 1
+      # https://github.com/marketplace/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@v4
 
+      # 2
+      # https://github.com/marketplace/actions/flutter-action
+      - name: Setup flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          #flutter-version: 3.19.0
+
+      # 3
+      - name: Build web
+#        run: flutter config --enable-web
+#        run: flutter pub get
+        run: flutter build web --base-href "/${{ github.event.repository.name }}/"
+
+      # 4
+      # https://github.com/marketplace/actions/github-pages-action
+      - name: Deploy to github pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          #github_token: ${{ secrets.STATIC_DEPLOY_KEY }}
+          publish_dir: ./build/web
