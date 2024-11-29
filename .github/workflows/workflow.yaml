@@ -84,5 +84,5 @@ jobs:
       - name: Deploy to github pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          #github_token: ${{ secrets.STATIC_DEPLOY_KEY }}
+          github_token: ${{ secrets.WORKFLOW_DEPLOY_KEY }}
           publish_dir: ./build/web
